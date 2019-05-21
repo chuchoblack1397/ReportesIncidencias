@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+
+
+    <ImageView
+        android:id="@+id/imageViewFoto"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#454545"
+        android:padding="10dp"
+        android:src="@drawable/ic_camera_alt_black_24dp" />
+
+    <TextView
+        android:id="@+id/tvLatitud"
+
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/imageViewFoto"
+        android:layout_marginStart="10dp"
+
+        android:layout_marginTop="205dp"
+        android:textAlignment="center"
+        android:text="Latitud: " />
+
+    <TextView
+        android:id="@+id/tvLongitud"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/imageViewFoto"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="205dp"
+        android:textAlignment="center"
+        android:text="Longitud: " />
+
+    <Button
+        android:id="@+id/fotoCapturar"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="250dp"
+        android:background="@color/colorVerde"
+        android:text="Capturar"
+        android:textColor="#fff"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/botonEnviarReporte"
+        android:layout_width="150dp"
+        android:layout_height="65dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="350dp"
+        android:background="@color/colorRosa"
+        android:text="ENVIAR REPORTE"
+        android:textColor="#fff"
+        android:textSize="24sp" />
+
+
+
+</RelativeLayout>
