@@ -121,7 +121,6 @@ public class reporteActivity extends AppCompatActivity implements LocationListen
         //--------------------- asignando varible a objetos------
         tvLat = (TextView) findViewById(R.id.tvLatitud);
         tvLon = (TextView) findViewById(R.id.tvLongitud);
-        tvFecha = (TextView) findViewById(R.id.tvPrueba);
         nLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         //--------------------------------------------------------
 
