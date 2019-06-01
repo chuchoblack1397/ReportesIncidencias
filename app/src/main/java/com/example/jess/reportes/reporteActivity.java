@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -61,6 +62,7 @@ public class reporteActivity extends AppCompatActivity implements LocationListen
     ImageView imagenFoto;
     Button btnCapturar;
     Button btnEnviar;
+
     //------------------------------------------
 
     //-------------Varaible para tomar las fotografias
@@ -151,39 +153,29 @@ public class reporteActivity extends AppCompatActivity implements LocationListen
     //----------------metodo del boton ENVIAR---------------
     private void llamarEnviarReporte() {
         ///---++++++++++++++++++++++++++++++++++++para metodo POST +++++++++++++++++++++++++++++++++++++++++++++++
-        //String url="http://reportes.infinit.com.mx/webServiceReportes.php?";
-        String url="http://192.168.1.69/reportesPrueba/webServiceReportes.php";
-
+        String url="http://reportes.infinit.com.mx/webServiceReportes.php";//servidor remoto
+        //String url="http://192.168.1.69/reportesPrueba/webServiceReportes.php";//servidor de prueba casa
         final String fecha = ObtenerFecha();
-
-
         mostrarMensajeEmergente("enviando");
 
 
         solicitudString = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-               // progreso.hide(); //se cierra la ventana de "enviando"
-
                 if (response.trim().equalsIgnoreCase("registro")){
                     mostrarMensajeEmergente("esconder");
                     //Toast.makeText(getApplicationContext(),"Se enviaron los datos con exito",Toast.LENGTH_SHORT).show();
                     mostrarMensajeEmergente("realizar");
-
                 }
                 else
                 {
                     mostrarMensajeEmergente("esconder");
                     Toast.makeText(getApplicationContext(),"NO SE ENVIARON LOS DATOS: "+response.toString(),Toast.LENGTH_SHORT).show();
-
                 }
-
-
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-               // progreso.hide(); //se cierra la ventana de "enviando"
                 Toast.makeText(getApplicationContext(),"No se pudo conectar",Toast.LENGTH_SHORT).show();
                 mostrarMensajeEmergente("esconder");
             }
@@ -191,14 +183,14 @@ public class reporteActivity extends AppCompatActivity implements LocationListen
 
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
+                //--convirtiendo imagen a string
+                imagenString = convertirImgString(imageBitmap);
+                //----------
 
                 //asignando los datos a los parametros
                 String latitudString = enviaLatitud;
                 String longitudString = enviaLongitud;
                 String nombreFoto = "LAT_"+latitudString+"__LON_"+longitudString+"__DATETIME_"+fecha;
-                //--convirtiendo imagen a strign
-                imagenString = convertirImgString(imageBitmap);
-                //----------
 
                 //--alimentando los parametros que se enviaran por metodo POST
                 Map<String,String> parametros = new HashMap<>();
@@ -207,15 +199,15 @@ public class reporteActivity extends AppCompatActivity implements LocationListen
                 parametros.put("nombre",nombreFoto);
                 parametros.put("foto",imagenString);
 
-
                 return parametros;
             }
         };
-        //Respuesta = Volley.newRequestQueue(getApplicationContext());
+        Respuesta = Volley.newRequestQueue(getApplicationContext());
         Respuesta.add(solicitudString);
         //------------++++++++++++++++++--------fin metodo POST---------+++++++++++++++++--------------*/
     }//------------fin llamarEnviarReporte-----
 
+    //------------------METODO MENSAJES EMERGENTES---------------
     private void mostrarMensajeEmergente(String recibido) {
         ProgressDialog progreso = new ProgressDialog(this);
         Toast mensajeEnviando = null;
@@ -250,12 +242,9 @@ public class reporteActivity extends AppCompatActivity implements LocationListen
                 aler.show();
 
                 break;
-
         }
-
-
     }
-
+//----------------------fin metodo mensajes emergentes
 
     // nuevo metodo para la camara
     private void abrirCamara() {
@@ -299,10 +288,34 @@ public class reporteActivity extends AppCompatActivity implements LocationListen
                 imageBitmap = BitmapFactory.decodeFile(path);
                 imagenFoto.setImageBitmap(imageBitmap);
 
+
+
                 break;
         }
 
+        imageBitmap = redimensionarImagen(imageBitmap,300,170);
+
     }
+
+    //-----------METODO PARA REDIMENCIONAR IMAGEN ---------------
+    private Bitmap redimensionarImagen(Bitmap imageBitmap, float anchoNuevo, float altoNuevo) {
+        int ancho = imageBitmap.getWidth();
+        int alto = imageBitmap.getHeight();
+
+        if(ancho>altoNuevo || alto>altoNuevo){
+            float escalaAncho = anchoNuevo/ancho;
+            float escalaAlto = altoNuevo/alto;
+
+            Matrix matrix = new Matrix();
+            matrix.postScale(escalaAncho,escalaAlto);
+
+            return Bitmap.createBitmap(imageBitmap,0,0,ancho,alto,matrix,false);
+
+        }else{
+            return imageBitmap;
+        }
+    }
+    //----------------------------fin metodo redimensionar----------------
 
     //--------------------- Metodo para convertir imagen bitmap-----------
     private String convertirImgString(Bitmap imageBitmap) {
