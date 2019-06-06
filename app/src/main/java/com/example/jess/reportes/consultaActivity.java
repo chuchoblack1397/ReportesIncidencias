@@ -82,11 +82,12 @@ public class consultaActivity extends AppCompatActivity implements Response.List
                 reporte.setLatitud(jsonObject.optString("latitud"));
                 reporte.setLongitud(jsonObject.optString("longitud"));
                 reporte.setTiempo(jsonObject.optString("tiempo"));
+                reporte.setRuta(jsonObject.optString("urlFoto"));
 
                 listaReportes.add(reporte);
             }//fin for
 
-            adaptadorReportes adapter = new adaptadorReportes(listaReportes);
+            adaptadorReportes adapter = new adaptadorReportes(listaReportes, getApplicationContext());
             recyclerReportes.setAdapter(adapter);
 
 
