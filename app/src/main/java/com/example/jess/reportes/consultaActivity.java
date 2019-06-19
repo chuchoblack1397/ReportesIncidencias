@@ -19,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.jess.reportes.adaptadores.adaptadorReportes;
+import com.example.jess.reportes.clases.Preferencias;
 import com.example.jess.reportes.entidades.Reportes;
 
 import org.json.JSONArray;
@@ -35,6 +36,8 @@ public class consultaActivity extends AppCompatActivity implements Response.List
     RequestQueue solicitud;
     JsonObjectRequest jsonObjectRequest;
 
+    private String datoUsuario;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +50,13 @@ public class consultaActivity extends AppCompatActivity implements Response.List
 
         solicitud = Volley.newRequestQueue(getApplicationContext());
 
-        cargarWebService();
+        datoUsuario = Preferencias.obtenerPreferenciaString(this,Preferencias.PREFERENCIA_USUARIO_LOGIN);
+        cargarWebService(datoUsuario);
 
     }
 
-    private void cargarWebService(){
-        String url="http://reportes.infinit.com.mx/consultaReporte.php";
+    private void cargarWebService(final String miUsuario){
+        String url="http://reportes.infinit.com.mx/consultaReporte.php?datoUsuario="+miUsuario;
 
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,this,this);
         solicitud.add(jsonObjectRequest);

@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Reportes</string>
     <string name="textoReportar">Reportar</string>
+    <string name="title_activity_login">Reportes Login</string>
+    <string name="prompt_email">Correo</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="action_sign_in">Entrar</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Bienvenido !"</string>
+    <string name="invalid_username">Usuario invalido</string>
+    <string name="invalid_password">La contraseña debe tener mas de 5 caracteres</string>
+    <string name="login_failed">"Fallo de conexión"</string>
 </resources>

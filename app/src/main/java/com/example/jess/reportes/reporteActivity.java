@@ -39,6 +39,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.jess.reportes.clases.Preferencias;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -62,6 +63,8 @@ public class reporteActivity extends AppCompatActivity implements LocationListen
     ImageView imagenFoto;
     Button btnCapturar;
     Button btnEnviar;
+
+    private String datoUsuario; //varaible que obtendra el valor del cache del usuario
 
     //------------------------------------------
 
@@ -94,6 +97,8 @@ public class reporteActivity extends AppCompatActivity implements LocationListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reporte);
 
+        datoUsuario = Preferencias.obtenerPreferenciaString(this,Preferencias.PREFERENCIA_USUARIO_LOGIN);//se obtiene el valor del cache del usuario
+
         //------------------------Asignacion de varaibles a objetos
         btnCapturar = (Button) findViewById(R.id.fotoCapturar);
         imagenFoto = (ImageView) findViewById(R.id.imageViewFoto);
@@ -115,7 +120,7 @@ public class reporteActivity extends AppCompatActivity implements LocationListen
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                llamarEnviarReporte();
+                llamarEnviarReporte(datoUsuario);
             }
         });
         //---------------------------------------
@@ -151,7 +156,7 @@ public class reporteActivity extends AppCompatActivity implements LocationListen
     }
 
     //----------------metodo del boton ENVIAR---------------
-    private void llamarEnviarReporte() {
+    private void llamarEnviarReporte(final String miUsuario) {
         ///---++++++++++++++++++++++++++++++++++++para metodo POST +++++++++++++++++++++++++++++++++++++++++++++++
         String url="http://reportes.infinit.com.mx/webServiceReportes.php";//servidor remoto
         //String url="http://192.168.1.69/reportesPrueba/webServiceReportes.php";//servidor de prueba casa
@@ -194,6 +199,7 @@ public class reporteActivity extends AppCompatActivity implements LocationListen
 
                 //--alimentando los parametros que se enviaran por metodo POST
                 Map<String,String> parametros = new HashMap<>();
+                parametros.put("datoUsuario",miUsuario);
                 parametros.put("latitud",latitudString);
                 parametros.put("longitud",longitudString);
                 parametros.put("nombre",nombreFoto);
