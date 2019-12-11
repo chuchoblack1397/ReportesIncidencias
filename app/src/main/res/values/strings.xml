@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Reportes</string>
+    <string name="app_name">Reporte Incidencias - V.Demo 0.5</string>
     <string name="textoReportar">Reportar</string>
     <string name="title_activity_login">Reportes Login</string>
     <string name="prompt_email">Correo</string>
@@ -10,4 +10,8 @@
     <string name="invalid_username">Usuario invalido</string>
     <string name="invalid_password">La contraseña debe tener mas de 5 caracteres</string>
     <string name="login_failed">"Fallo de conexión"</string>
+    <string name="textoPoste">Postes</string>
+
+    <!--<string name="urlServidor">http://reportesv2.infinit.com.mx/webServiceReportes.php</string>-->
+    <string name="urlServidor">http://incidencias.geoportal.mx/webServiceReportes.php</string>
 </resources>

@@ -1,15 +1,11 @@
 package com.example.jess.reportes;
 
-import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.AttributeSet;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -56,7 +52,8 @@ public class consultaActivity extends AppCompatActivity implements Response.List
     }
 
     private void cargarWebService(final String miUsuario){
-        String url="http://reportes.infinit.com.mx/consultaReporte.php?datoUsuario="+miUsuario;
+        //String url="http://reportesv2.infinit.com.mx/consultaReporte.php?datoUsuario="+miUsuario;
+        String url="http://incidencias.geoportal.mx/consultaReporte.php?datoUsuario="+miUsuario;
 
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,this,this);
         solicitud.add(jsonObjectRequest);
@@ -86,6 +83,11 @@ public class consultaActivity extends AppCompatActivity implements Response.List
                 reporte.setLatitud(jsonObject.optString("latitud"));
                 reporte.setLongitud(jsonObject.optString("longitud"));
                 reporte.setTiempo(jsonObject.optString("tiempo"));
+                reporte.setTipoReporte(jsonObject.optString("tipoReporte"));
+                reporte.setNumPoste(jsonObject.optString("numPostes"));
+                reporte.setPropPoste(jsonObject.optString("propietarioPostes"));
+                reporte.setUsoPoste(jsonObject.optString("usoPostes"));
+                reporte.setEstadoPoste(jsonObject.optString("estadoPostes"));
                 reporte.setRuta(jsonObject.optString("urlFoto"));
 
                 listaReportes.add(reporte);

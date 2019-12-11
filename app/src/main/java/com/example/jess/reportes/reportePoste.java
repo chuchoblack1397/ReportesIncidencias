@@ -24,7 +24,9 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,9 +45,7 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
-//public class reporteActivity extends AppCompatActivity implements LocationListener, Response.Listener<JSONObject>,Response.ErrorListener {
-//implementacion para metodo POST
-public class reporteActivity extends AppCompatActivity implements LocationListener{
+public class reportePoste extends AppCompatActivity implements LocationListener {
 
     //-----------------------Variables foto
     ImageView imagenFoto;
@@ -72,6 +72,10 @@ public class reporteActivity extends AppCompatActivity implements LocationListen
     private TextView tvLat, tvLon, tvFecha;
     public String enviaLatitud = "", enviaLongitud = "";
     public String imagenString="";
+
+    private EditText  tbPropietario;
+   // private EditText tbNumPostes, tbPropietario, tbUso;
+    private RadioButton rbExcelente, rbRegular, rbDeplorable;
     //----------------------------------------------
 
     //--------------JSON para respuestas desde el webService----------
@@ -83,7 +87,7 @@ public class reporteActivity extends AppCompatActivity implements LocationListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reporte);
+        setContentView(R.layout.activity_reporte_poste);
 
         datoUsuario = Preferencias.obtenerPreferenciaString(this,Preferencias.PREFERENCIA_USUARIO_LOGIN);//se obtiene el valor del cache del usuario
 
@@ -92,6 +96,7 @@ public class reporteActivity extends AppCompatActivity implements LocationListen
         imagenFoto = (ImageView) findViewById(R.id.imageViewFoto);
         btnEnviar = (Button) findViewById(R.id.botonEnviarReporte);
         //----------------------------------------------------------
+
 
 
         //PRUEBA NUEVA PARA FOTO
@@ -117,6 +122,14 @@ public class reporteActivity extends AppCompatActivity implements LocationListen
         tvLat = (TextView) findViewById(R.id.tvLatitud);
         tvLon = (TextView) findViewById(R.id.tvLongitud);
         nLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+
+       // tbNumPostes = (EditText) findViewById(R.id.tb_numPostes);
+        tbPropietario = (EditText) findViewById(R.id.tb_propietario);
+       // tbUso = (EditText) findViewById(R.id.tb_uso);
+        rbExcelente = (RadioButton) findViewById(R.id.rb_Excelente);
+        rbRegular = (RadioButton) findViewById(R.id.rb_Regular);
+        rbDeplorable = (RadioButton) findViewById(R.id.rb_Deplorable);
+
         //--------------------------------------------------------
 
         //-------------------- al momento de iniciar la aplicacion cargar las coordenadas
@@ -146,9 +159,9 @@ public class reporteActivity extends AppCompatActivity implements LocationListen
     //----------------metodo del boton ENVIAR---------------
     private void llamarEnviarReporte(final String miUsuario) {
         ///---++++++++++++++++++++++++++++++++++++para metodo POST +++++++++++++++++++++++++++++++++++++++++++++++
-        //String url="http://reportes.infinit.com.mx/webServiceReportes.php";//servidor remoto
+        String url = getString(R.string.urlServidor);//servidor remoto
         //String url="http://192.168.1.69/reportesPrueba/webServiceReportes.php";//servidor de prueba casa
-        String url = getString(R.string.urlServidor);
+
         final String fecha = ObtenerFecha();
         mostrarMensajeEmergente("enviando");
 
@@ -186,12 +199,51 @@ public class reporteActivity extends AppCompatActivity implements LocationListen
                 String longitudString = enviaLongitud;
                 String nombreFoto = "LAT_"+latitudString+"__LON_"+longitudString+"__DATETIME_"+fecha;
 
+                String tipoReporte = "INCIDENCIA";
+
+                /*
+                String numPostes = tbNumPostes.getText().toString();
+                String propietario = tbPropietario.getText().toString();
+                String uso = tbUso.getText().toString();
+                String estado = "";
+
+                if(rbExcelente.isChecked()){
+                    estado = "Excelente";
+                }
+                if(rbRegular.isChecked()){
+                    estado = "Regular";
+                }
+                if(rbDeplorable.isChecked()){
+                    estado = "Deplorable";
+                }*/
+
+                String numPostes = "123";
+                String propietario = tbPropietario.getText().toString();
+                String uso = "demo";
+                String estado = "";
+
+                if(rbExcelente.isChecked()){
+                    estado = "Delito";
+                }
+                if(rbRegular.isChecked()){
+                    estado = "Falta Cívica";
+                }
+                if(rbDeplorable.isChecked()){
+                    estado = "Altercado";
+                }
+
+
                 //--alimentando los parametros que se enviaran por metodo POST
                 Map<String,String> parametros = new HashMap<>();
                 parametros.put("datoUsuario",miUsuario);
                 parametros.put("latitud",latitudString);
                 parametros.put("longitud",longitudString);
                 parametros.put("nombre",nombreFoto);
+                parametros.put("tipoReporte",tipoReporte);
+                parametros.put("numPostes",numPostes);
+                parametros.put("propietario",propietario);
+                parametros.put("uso",uso);
+                parametros.put("estado",estado);
                 parametros.put("foto",imagenString);
 
                 return parametros;
@@ -283,10 +335,12 @@ public class reporteActivity extends AppCompatActivity implements LocationListen
                 imageBitmap = BitmapFactory.decodeFile(path);
                 imagenFoto.setImageBitmap(imageBitmap);
 
+
+
                 break;
         }
 
-        imageBitmap = redimensionarImagen(imageBitmap,2048,1536);
+        imageBitmap = redimensionarImagen(imageBitmap,300,170);
 
     }
 
@@ -338,7 +392,7 @@ public class reporteActivity extends AppCompatActivity implements LocationListen
         enviaLatitud = location.getLatitude()+"";
         enviaLongitud = location.getLongitude()+"";
         //------------------------------------------
-           }
+    }
 
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {

@@ -8,6 +8,51 @@ public class Reportes {
     private String longitud;
     private String tiempo;
     private String ruta;
+    private String tipoReporte;
+    private String numPoste;
+    private String propPoste;
+    private String usoPoste;
+    private String estadoPoste;
+
+    public String getTipoReporte() {
+        return tipoReporte;
+    }
+
+    public void setTipoReporte(String tipoReporte) {
+        this.tipoReporte = tipoReporte;
+    }
+
+    public String getNumPoste() {
+        return numPoste;
+    }
+
+    public void setNumPoste(String numPoste) {
+        this.numPoste = numPoste;
+    }
+
+    public String getPropPoste() {
+        return propPoste;
+    }
+
+    public void setPropPoste(String propPoste) {
+        this.propPoste = propPoste;
+    }
+
+    public String getUsoPoste() {
+        return usoPoste;
+    }
+
+    public void setUsoPoste(String usoPoste) {
+        this.usoPoste = usoPoste;
+    }
+
+    public String getEstadoPoste() {
+        return estadoPoste;
+    }
+
+    public void setEstadoPoste(String estadoPoste) {
+        this.estadoPoste = estadoPoste;
+    }
 
     public String getRuta() {
         return ruta;

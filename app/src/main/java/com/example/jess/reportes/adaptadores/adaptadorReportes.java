@@ -2,8 +2,8 @@ package com.example.jess.reportes.adaptadores;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,8 +19,6 @@ import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.jess.reportes.R;
 import com.example.jess.reportes.entidades.Reportes;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -51,6 +49,11 @@ public class adaptadorReportes extends RecyclerView.Adapter<adaptadorReportes.ad
         holder.txtLatitud.setText(listaReporte.get(posicion).getLatitud().toString());
         holder.txtLongitud.setText(listaReporte.get(posicion).getLongitud().toString());
         holder.txtTiempo.setText(listaReporte.get(posicion).getTiempo().toString());
+        holder.txtTipoReporte.setText(listaReporte.get(posicion).getTipoReporte().toString());
+        holder.txtNumPoste.setText(listaReporte.get(posicion).getNumPoste().toString());
+        holder.txtPropietarioPoste.setText(listaReporte.get(posicion).getPropPoste().toString());
+        holder.txtUsoPoste.setText(listaReporte.get(posicion).getUsoPoste().toString());
+        holder.txtEstadoPoste.setText(listaReporte.get(posicion).getEstadoPoste().toString());
 
         if(listaReporte.get(posicion).getRuta() !=null){
 
@@ -90,7 +93,7 @@ public class adaptadorReportes extends RecyclerView.Adapter<adaptadorReportes.ad
 
     public class adaptadorHolder extends RecyclerView.ViewHolder{
 
-        TextView txtIdReporte, txtLatitud, txtLongitud, txtTiempo;
+        TextView txtIdReporte, txtLatitud, txtLongitud, txtTiempo, txtTipoReporte, txtNumPoste, txtPropietarioPoste, txtUsoPoste, txtEstadoPoste;
         ImageView imageView;
 
         public adaptadorHolder(View itemView) {
@@ -99,6 +102,13 @@ public class adaptadorReportes extends RecyclerView.Adapter<adaptadorReportes.ad
             txtLatitud = (TextView) itemView.findViewById(R.id.txtLatitud);
             txtLongitud = (TextView) itemView.findViewById(R.id.txtLongitud);
             txtTiempo = (TextView) itemView.findViewById(R.id.txtTiempo);
+
+            txtTipoReporte = (TextView) itemView.findViewById(R.id.txtTipo);
+            txtNumPoste = (TextView) itemView.findViewById(R.id.txtNumero);
+            txtPropietarioPoste = (TextView) itemView.findViewById(R.id.txtPropietario);
+            txtUsoPoste = (TextView) itemView.findViewById(R.id.txtUso);
+            txtEstadoPoste = (TextView) itemView.findViewById(R.id.txtEstado);
+
             imageView = (ImageView) itemView.findViewById(R.id.imgReporte);
         }
     }

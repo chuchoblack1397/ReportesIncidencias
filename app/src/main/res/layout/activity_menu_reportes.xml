@@ -4,43 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:orientation="vertical"
     android:padding="10dp"
     android:background="@color/backgroundColor"
+    tools:context=".menuReportes"
     >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center_vertical|end"
-        android:layout_marginBottom="15dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/tvUsuario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mi nombre de usuario"
-            android:layout_marginEnd="20dp"
-            />
-
-        <TextView
-            android:id="@+id/btnCerrarSesion"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="end"
-            android:text="Cerrar Sesión"
-            android:textStyle="bold"
-            android:background="@color/lightGrayLine"
-            android:textAlignment="center"
-            android:textColor="@color/colorRosa"
-            android:padding="5dp"
-            />
-
-    </LinearLayout>
 
     //-------------------------- PRIMERO LINEA ---------------------------------------
     <LinearLayout
@@ -55,110 +24,7 @@
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
 
-            android:id="@+id/btnReportar"
-
-            android:layout_width="160dp"
-            android:layout_height="190dp"
-            android:layout_margin="10dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/fondo_color_rosa"
-                    android:src="@drawable/ic_camera_alt_black_24dp"
-                    android:padding="10dp"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/textoReportar"
-                    />
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/lightGrayLine"
-                    android:layout_margin="10dp"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Generar nuevo reporte con captura"
-                    android:padding="5dp"
-                    android:textColor="@android:color/darker_gray"
-                    />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-        //-------------------------- Fin primer boton ---------------------------------------
-
-        //---------------------------------   Segundo Boton    ----------------
-        <androidx.cardview.widget.CardView
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-
-            android:id="@+id/btnMisReportes"
-
-            android:layout_width="160dp"
-            android:layout_height="190dp"
-            android:layout_margin="10dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/fondo_circulo_verde"
-                    android:src="@drawable/ic_playlist_add_check_black_24dp"
-                    android:padding="10dp"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:text="Mis Reportes"
-                    />
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/lightGrayLine"
-                    android:layout_margin="10dp"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Ver la lista de los reportes generados"
-                    android:padding="5dp"
-                    android:textColor="@android:color/darker_gray"
-                    />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-        //-------------------------- Fin Segundo boton ---------------------------------------
-    </LinearLayout>
-    //-------------------------- Fin PRIMERA LINEA ---------------------------------------
-
-    //---------------------------------   SEGUNDA LINEA    ----------------
-    <LinearLayout
-        android:clipToPadding="false"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="invisible">
-
-        //---------------------------------   Tercer Boton    ----------------
-        <androidx.cardview.widget.CardView
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
+            android:id="@+id/btnReportarPoste"
 
             android:layout_width="160dp"
             android:layout_height="190dp"
@@ -172,7 +38,7 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@drawable/fondo_circulo_amarillo"
-                    android:src="@drawable/ic_lightbulb_outline_black_24dp"
+                    android:src="@drawable/ic_wb_incandescent_black_24dp"
                     android:padding="10dp"
                     />
                 <TextView
@@ -180,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
-                    android:text="Otra opción 1"
+                    android:text="Incidencia"
                     />
                 <View
                     android:layout_width="match_parent"
@@ -188,26 +54,87 @@
                     android:background="@color/lightGrayLine"
                     android:layout_margin="10dp"
                     />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Agregar otra opción"
                     android:padding="5dp"
-                    android:textColor="@android:color/darker_gray"
-                    />
+                    android:text="Generar nuevo reporte de incidencia"
+                    android:textColor="@android:color/darker_gray" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-        //-------------------------- Fin Tercer boton ---------------------------------------
+        //-------------------------- Fin primer boton ---------------------------------------
 
-        //---------------------------------   Cuarto Boton    ----------------
+        //---------------------------------   Segundo Boton    ----------------
         <androidx.cardview.widget.CardView
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
 
+            android:id="@+id/btnReportarMedidor"
+
             android:layout_width="160dp"
             android:layout_height="190dp"
-            android:layout_margin="10dp">
+            android:layout_margin="10dp"
+            android:visibility="invisible">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/fondo_circulo_verde"
+                    android:src="@drawable/ic_update_black_24dp"
+                    android:padding="10dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Categoría 2"
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/lightGrayLine"
+                    android:layout_margin="10dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Descripción"
+                    android:textColor="@android:color/darker_gray" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        //-------------------------- Fin Segundo boton ---------------------------------------
+    </LinearLayout>
+    //-------------------------- Fin PRIMERA LINEA ---------------------------------------
+
+    //---------------------------------   SEGUNDA LINEA    ----------------
+    <LinearLayout
+        android:clipToPadding="false"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        //---------------------------------   Tercer Boton    ----------------
+        <androidx.cardview.widget.CardView
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+
+            android:id="@+id/btnReportarFrente"
+
+            android:layout_width="160dp"
+            android:layout_height="190dp"
+            android:layout_margin="10dp"
+            android:visibility="invisible">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -217,42 +144,35 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@drawable/fondo_circulo_purpura"
-                    android:src="@drawable/ic_star_black_24dp"
+                    android:src="@drawable/ic_home_black_24dp"
                     android:padding="10dp"
                     />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
                     android:layout_marginTop="10dp"
-                    android:text="Otra Opción 2"
-                    />
+                    android:text="Categoría 3"
+                    android:textStyle="bold" />
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/lightGrayLine"
                     android:layout_margin="10dp"
                     />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Agregar otra opción"
                     android:padding="5dp"
-                    android:textColor="@android:color/darker_gray"
-                    />
+                    android:text="Descripción"
+                    android:textColor="@android:color/darker_gray" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-        //-------------------------- Fin Cuarto boton --------------------------------------
+        //-------------------------- Fin Tercer boton ---------------------------------------
+
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:text="Reportes Incidencias - Versión: Demo 0.5"
-        android:textAlignment="center" />
-
     //-------------------------- Fin SEGUNDA LINEA ---------------------------------------
-
 </LinearLayout>

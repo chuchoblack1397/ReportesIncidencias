@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/backgroundColor"
+    android:orientation="vertical"
+    tools:context=".reportePoste">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageViewFoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:background="#454545"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_camera_alt_black_24dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvLatitud"
+
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/imageViewFoto"
+                        android:layout_marginStart="10dp"
+                        android:text="Latitud: "
+                        android:textAlignment="center" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvLongitud"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@id/imageViewFoto"
+                        android:layout_marginEnd="10dp"
+                        android:text="Longitud: "
+                        android:textAlignment="center" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp">
+
+                <TextView
+                    android:id="@+id/tv_NumPostes1"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Tipo de incidencia:" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20sp">
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_Excelente"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Delito"
+                        android:checked="true"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/rb_Regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Falta Cívica" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Deplorable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Altercado" />
+                </RadioGroup>
+            </LinearLayout>
+
+<!--
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                >
+
+                <TextView
+                    android:id="@+id/tv_NumPostes"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Número de Poste:" />
+
+                <EditText
+                    android:id="@+id/tb_numPostes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="number" />
+            </LinearLayout>
+            -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp">
+
+                <TextView
+                    android:id="@+id/tv_Prop"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Descripción: " />
+
+                <EditText
+                    android:id="@+id/tb_propietario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:text="" />
+            </LinearLayout>
+
+            <!--
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp">
+
+                <TextView
+                    android:id="@+id/tv_Uso"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Uso: " />
+
+                <EditText
+                    android:id="@+id/tb_uso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="" />
+            </LinearLayout>
+-->
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_margin="30sp">
+
+                <Button
+                    android:id="@+id/fotoCapturar"
+                    android:layout_width="150dp"
+                    android:layout_height="65dp"
+                    android:background="@color/colorVerde"
+                    android:text="Capturar"
+                    android:textColor="#fff"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/botonEnviarReporte"
+                    android:layout_width="150dp"
+                    android:layout_height="65dp"
+                    android:background="@color/colorRosa"
+                    android:text="ENVIAR REPORTE"
+                    android:textColor="#fff"
+                    android:textSize="24sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+</LinearLayout>

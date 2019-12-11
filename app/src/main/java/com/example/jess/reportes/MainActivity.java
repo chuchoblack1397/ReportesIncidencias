@@ -1,9 +1,9 @@
 package com.example.jess.reportes;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
+import androidx.cardview.widget.CardView;
 import android.view.View;
 import android.widget.TextView;
 
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         btn_Reportar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ventana_reportar = new Intent(getApplicationContext(), reporteActivity.class);
+                Intent ventana_reportar = new Intent(getApplicationContext(), menuReportes.class);
                 startActivity(ventana_reportar);
             }
         });
